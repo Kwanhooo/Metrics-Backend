@@ -1,7 +1,6 @@
 package org.csu.metrics;
 
 import org.csu.metrics.common.Constant;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,7 +18,7 @@ public class Application {
         File file = new File(Constant.UPLOAD_PATH);
         if (!file.exists()) {
             boolean mkdirs = file.mkdirs();
-            System.out.println("创建文件夹" + mkdirs + (mkdirs ? "成功" : "失败"));
+            System.out.println("创建`缓存`文件夹" + mkdirs + (mkdirs ? "成功" : "失败"));
         }
     }
 

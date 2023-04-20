@@ -54,7 +54,7 @@ public class LKService {
             lkVO.setClazz(result.getClassName());
             lkVO.setType(result.getType());
             lkVO.setCs(String.valueOf(result.getWmc()));
-            lkVO.setNco(String.valueOf(result.getRfc()));
+            lkVO.setNoo(String.valueOf(result.getRfc()));
             lkVO.setNoa(String.valueOf(result.getLcom()));
             lkVO.setSi(String.valueOf(result.getCbo()));
             vos.add(lkVO);

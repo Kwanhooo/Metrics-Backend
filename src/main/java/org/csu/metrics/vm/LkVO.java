@@ -8,7 +8,7 @@ public class LkVO {
     String clazz;
     String type;
     String cs;
-    String nco;
+    String noo;
     String noa;
     String si;
 }
