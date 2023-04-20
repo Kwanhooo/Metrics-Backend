@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ExtendVO {
-    String file;
+    String name;
     String NOM;
     String NOPM;
     String NOSM;

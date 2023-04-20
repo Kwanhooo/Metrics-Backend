@@ -53,7 +53,7 @@ public class ExtendService {
         List<ExtendVO> vos = new ArrayList<>();
         for (CKNumber result : results) {
             ExtendVO vo = new ExtendVO();
-            vo.setFile(result.getFile());
+            vo.setName(result.getFile());
             vo.setNOM(String.valueOf(result.getNom()));
             vo.setNOPM(String.valueOf(result.getNopm()));
             vo.setNOSM(String.valueOf(result.getNosm()));

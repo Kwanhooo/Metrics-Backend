@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class LkVO {
-    String file;
+    String name;
     String clazz;
     String type;
     String cs;

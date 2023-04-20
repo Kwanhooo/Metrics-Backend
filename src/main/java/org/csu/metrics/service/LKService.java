@@ -50,7 +50,7 @@ public class LKService {
         List<LkVO> vos = new ArrayList<>();
         for (CKNumber result : results) {
             LkVO lkVO = new LkVO();
-            lkVO.setFile(result.getFile().split("###")[1]);
+            lkVO.setName(result.getFile().split("###")[1]);
             lkVO.setClazz(result.getClassName());
             lkVO.setType(result.getType());
             lkVO.setCs(String.valueOf(result.getWmc()));

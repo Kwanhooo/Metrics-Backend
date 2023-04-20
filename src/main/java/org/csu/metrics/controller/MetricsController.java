@@ -1,15 +1,16 @@
 package org.csu.metrics.controller;
 
-import jakarta.annotation.Resource;
 import org.csu.metrics.common.CommonResponse;
 import org.csu.metrics.service.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/metrics")
+@CrossOrigin(origins = "*")
 public class MetricsController {
     @Resource
     private CKXMLService ckXMLService;
@@ -28,28 +29,42 @@ public class MetricsController {
 
 
     @PostMapping("/ck/xml")
-    public CommonResponse<?> ckXML(MultipartFile file) {
-        return CommonResponse.createForSuccess(ckXMLService.handleRequest(file));
+    public CommonResponse<?> ckXML(@RequestParam("file") MultipartFile files) {
+        System.out.println("=====================================");
+        System.out.println(files);
+        System.out.println("=====================================");
+        return CommonResponse.createForSuccess(ckXMLService.handleRequest(files));
     }
 
     @PostMapping("/ck/java")
-    public CommonResponse<?> ckJava(MultipartFile[] files) {
-        System.out.println(files[0].getOriginalFilename());
+    public CommonResponse<?> ckJava(@RequestParam("file") MultipartFile[] files) {
+        System.out.println("================  CK  ===============");
+        System.out.println(Arrays.toString(files));
+        System.out.println("=====================================");
         return CommonResponse.createForSuccess(ckJavaService.handleRequest(files));
     }
 
     @PostMapping("/tradition")
-    public CommonResponse<?> tradition(MultipartFile[] files) {
+    public CommonResponse<?> tradition(@RequestParam("file") MultipartFile[] files) {
+        System.out.println("============  TRADITION  ============");
+        System.out.println(Arrays.toString(files));
+        System.out.println("=====================================");
         return CommonResponse.createForSuccess(traditionService.handleRequest(files));
     }
 
     @PostMapping("/lk")
-    public CommonResponse<?> lk(MultipartFile[] files) {
+    public CommonResponse<?> lk(@RequestParam("file") MultipartFile[] files) {
+        System.out.println("================  LK  ==============");
+        System.out.println(Arrays.toString(files));
+        System.out.println("=====================================");
         return CommonResponse.createForSuccess(lkService.handleRequest(files));
     }
 
     @PostMapping("/extend")
-    public CommonResponse<?> extend(MultipartFile[] files) {
+    public CommonResponse<?> extend(@RequestParam("file") MultipartFile[] files) {
+        System.out.println("==============  EXTEND  =============");
+        System.out.println(Arrays.toString(files));
+        System.out.println("=====================================");
         return CommonResponse.createForSuccess(extendService.handleRequest(files));
     }
 }

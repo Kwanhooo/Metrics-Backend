@@ -48,7 +48,7 @@ public class CKJavaService {
         List<CkVO> vos = new ArrayList<>();
         for (CKNumber result : results) {
             CkVO ckVO = new CkVO();
-            ckVO.setFile(result.getFile().split("###")[1]);
+            ckVO.setName(result.getFile().split("###")[1]);
             ckVO.setClazz(result.getClassName());
             ckVO.setType(result.getType());
             ckVO.setWMC(String.valueOf(result.getWmc()));

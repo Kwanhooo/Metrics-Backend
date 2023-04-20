@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TraditionVO {
-    private String file;
+    private String name;
     private String LOC;
     private String CC;
     private String CP;

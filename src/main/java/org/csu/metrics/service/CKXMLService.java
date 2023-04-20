@@ -57,7 +57,7 @@ public class CKXMLService {
         List<CkVO> vos = new ArrayList<>();
         for (CKBean result : results) {
             CkVO ckVO = new CkVO();
-            ckVO.setFile(result.getFile());
+            ckVO.setName(result.getFile());
             ckVO.setClazz(result.getClazz());
             ckVO.setType(result.getType());
             ckVO.setWMC(String.valueOf(result.getWmc()));
