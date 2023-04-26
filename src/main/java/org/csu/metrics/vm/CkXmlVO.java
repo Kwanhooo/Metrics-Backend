@@ -1,8 +1,7 @@
-package org.csu.metrics.service;
+package org.csu.metrics.vm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.csu.metrics.vm.CkXmlItemVO;
 
 import java.util.List;
 
