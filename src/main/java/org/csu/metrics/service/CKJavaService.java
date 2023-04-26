@@ -49,7 +49,7 @@ public class CKJavaService {
         for (CKNumber result : results) {
             CkVO ckVO = new CkVO();
             ckVO.setName(result.getFile().split("###")[1]);
-            ckVO.setClazz(result.getClassName());
+            ckVO.setCLASS(result.getClassName());
             ckVO.setType(result.getType());
             ckVO.setWMC(String.valueOf(result.getWmc()));
             ckVO.setRFC(String.valueOf(result.getRfc()));

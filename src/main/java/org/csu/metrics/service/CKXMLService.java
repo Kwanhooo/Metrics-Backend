@@ -4,17 +4,14 @@ import org.csu.metrics.common.Constant;
 import org.csu.metrics.domain.CKBean;
 import org.csu.metrics.domain.Clazz;
 import org.csu.metrics.util.MetricUtil;
-import org.csu.metrics.vm.CkVO;
+import org.csu.metrics.vm.CkXmlItemVO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CKXMLService {
@@ -40,26 +37,40 @@ public class CKXMLService {
         return finalResult;
     }
 
-    public List<CkVO> handleRequest(MultipartFile file) {
+    public List<Map<String, Object>> handleMultiRequest(MultipartFile[] files) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (MultipartFile file : files) {
+            Map<String, Object> map = new HashMap<>();
+            CkXmlVO ckXmlVO = handleRequest(file);
+            map.put("name", ckXmlVO.getName());
+            ckXmlVO.getClasses().forEach(clazz -> {
+                map.put(clazz.getCLASS(), clazz);
+            });
+            result.add(map);
+        }
+        return result;
+    }
+
+    public CkXmlVO handleRequest(MultipartFile file) {
         List<CKBean> result;
         try {
             File targetFile = new File(Constant.UPLOAD_PATH,
-                    UUID.randomUUID() + Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf(".")));
+                    UUID.randomUUID() + "###" + file.getOriginalFilename());
             file.transferTo(targetFile);
             result = start(targetFile);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return convertToVO(result);
+        List<CkXmlItemVO> ckVOS = convertToVO(result);
+        return new CkXmlVO(file.getOriginalFilename(), ckVOS);
     }
 
-    private List<CkVO> convertToVO(List<CKBean> results) {
-        List<CkVO> vos = new ArrayList<>();
+    private List<CkXmlItemVO> convertToVO(List<CKBean> results) {
+        List<CkXmlItemVO> vos = new ArrayList<>();
         for (CKBean result : results) {
-            CkVO ckVO = new CkVO();
-            ckVO.setName(result.getFile());
-            ckVO.setClazz(result.getClazz());
-            ckVO.setType(result.getType());
+            CkXmlItemVO ckVO = new CkXmlItemVO();
+            ckVO.setCLASS(result.getClazz());
+//            ckVO.setType(result.getType());
             ckVO.setWMC(String.valueOf(result.getWmc()));
             ckVO.setRFC(String.valueOf(result.getRfc()));
             ckVO.setLCOM(String.valueOf(result.getLcom()));

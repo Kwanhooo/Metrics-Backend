@@ -29,11 +29,11 @@ public class MetricsController {
 
 
     @PostMapping("/ck/xml")
-    public CommonResponse<?> ckXML(@RequestParam("file") MultipartFile files) {
+    public CommonResponse<?> ckXML(@RequestParam("file") MultipartFile[] files) {
         System.out.println("=====================================");
-        System.out.println(files);
+        System.out.println(Arrays.toString(files));
         System.out.println("=====================================");
-        return CommonResponse.createForSuccess(ckXMLService.handleRequest(files));
+        return CommonResponse.createForSuccess(ckXMLService.handleMultiRequest(files));
     }
 
     @PostMapping("/ck/java")

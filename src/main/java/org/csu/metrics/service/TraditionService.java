@@ -84,7 +84,12 @@ public class TraditionService {
     private List<TraditionVO> convertToVO(List<TrBean> results) {
         List<TraditionVO> traditionVOS = new ArrayList<>();
         for (TrBean result : results) {
-            traditionVOS.add(new TraditionVO(result.getFile(), result.getLoc(), result.getCc(), result.getCp()));
+            result.setCp(String.valueOf((int) Math.ceil(Double.parseDouble(result.getCp()))));
+            // cc 去掉最后的百分号
+            result.setCc(result.getCc().substring(0, result.getCc().length() - 1));
+            // cc / 100
+            result.setCc(String.valueOf(Double.parseDouble(result.getCc()) / 100));
+            traditionVOS.add(new TraditionVO(result.getFile(), result.getLoc(), result.getCp(), result.getCc()));
         }
         return traditionVOS;
     }

@@ -3,10 +3,8 @@ package org.csu.metrics.vm;
 import lombok.Data;
 
 @Data
-public class CkVO {
-    private String name;
+public class CkXmlItemVO {
     private String CLASS;
-    private String type;
     private String WMC;
     private String RFC;
     private String LCOM;
