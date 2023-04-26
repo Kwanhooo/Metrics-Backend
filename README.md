@@ -8,7 +8,9 @@ _本项目的开发工作起始于：2023 年 4 月_
 
 ## 📔 自述
 
-> 2023 © [Software Metrics - Central South University](https://www.0xCAFEBABE.cn)
+本项目透过`Antlr 4 语法分析树`实现对Java语言的传统软件度量、`CK度量`（输入类图或者Java源码）、`LK度量`、`拓展度量`
+
+> 2023 © [Software Metrics - Central South University](https://metrics.0xCAFEBABE.cn)
 >
 > Powered by [CSU, Org. or its affiliates.](https://www.csu.edu.cn/)
 
@@ -35,7 +37,7 @@ git push
 
 ![GitHub](https://img.shields.io/github/license/Kwanhooo/Metrics-Backend?style=for-the-badge)
 
-![Website](https://img.shields.io/website?label=prod-services&style=for-the-badge&url=https://www.0xcafebabe.cn)
+![Website](https://img.shields.io/website?label=prod-services&style=for-the-badge&url=https://metrics.0xcafebabe.cn)
 
 ---
 
