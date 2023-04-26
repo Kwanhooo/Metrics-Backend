@@ -16,6 +16,8 @@ import static org.csu.metrics.common.ResponseCode.NEED_LOGIN;
 
 /**
  * 全局异常捕获器
+ *
+ * @author Kwanho
  */
 @Slf4j
 @RestControllerAdvice

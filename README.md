@@ -8,7 +8,7 @@ _本项目的开发工作起始于：2023 年 4 月_
 
 ## 📔 自述
 
-> 2023 © [Software Metrics - Central South University](https://tvds.0xCAFEBABE.cn)
+> 2023 © [Software Metrics - Central South University](https://www.0xCAFEBABE.cn)
 >
 > Powered by [CSU, Org. or its affiliates.](https://www.csu.edu.cn/)
 
@@ -35,7 +35,7 @@ git push
 
 ![GitHub](https://img.shields.io/github/license/Kwanhooo/Metrics-Backend?style=for-the-badge)
 
-![Website](https://img.shields.io/website?label=prod-services&style=for-the-badge&url=https://tvds.0xcafebabe.cn)
+![Website](https://img.shields.io/website?label=prod-services&style=for-the-badge&url=https://www.0xcafebabe.cn)
 
 ---
 

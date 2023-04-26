@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @author Kwanho
- * @date 2022-10-29 16:56
  */
 @Configuration
 public class ConfigAdapter implements WebMvcConfigurer {

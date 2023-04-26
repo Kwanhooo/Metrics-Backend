@@ -16,6 +16,12 @@ import java.util.UUID;
 
 @Service
 public class CKJavaService {
+    /**
+     * 传入文件列表，返回CKNumber列表
+     *
+     * @param targetFiles 文件列表
+     * @return CKNumber列表
+     */
     public List<CKNumber> start(List<File> targetFiles) {
         List<CKNumber> finalResult = new ArrayList<>();
         for (File file : targetFiles) {
@@ -28,6 +34,12 @@ public class CKJavaService {
         return finalResult;
     }
 
+    /**
+     * 传入文件列表，返回CkVO列表
+     *
+     * @param files 文件列表
+     * @return CkVO列表
+     */
     public List<CkVO> handleRequest(MultipartFile[] files) {
         List<File> targetFiles = new ArrayList<>();
         for (MultipartFile file : files) {
@@ -44,6 +56,12 @@ public class CKJavaService {
         return convertToVO(results);
     }
 
+    /**
+     * 将CKNumber列表转换为CkVO列表
+     *
+     * @param results CKNumber列表
+     * @return CkVO列表
+     */
     private List<CkVO> convertToVO(List<CKNumber> results) {
         List<CkVO> vos = new ArrayList<>();
         for (CKNumber result : results) {

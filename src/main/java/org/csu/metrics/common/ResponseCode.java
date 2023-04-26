@@ -2,6 +2,9 @@ package org.csu.metrics.common;
 
 import lombok.Getter;
 
+/**
+ * 响应码枚举类
+ */
 @Getter
 public enum ResponseCode {
 

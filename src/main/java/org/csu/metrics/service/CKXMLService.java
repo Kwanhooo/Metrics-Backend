@@ -5,16 +5,26 @@ import org.csu.metrics.domain.CKBean;
 import org.csu.metrics.domain.Clazz;
 import org.csu.metrics.util.MetricUtil;
 import org.csu.metrics.vm.CkXmlItemVO;
+import org.csu.metrics.vm.CkXmlVO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CKXMLService {
+    /**
+     * 传入文件列表，返回CKNumber列表
+     *
+     * @param targetFile 文件列表
+     * @return CKNumber列表
+     * @throws Exception 异常
+     */
     public List<CKBean> start(File targetFile) throws Exception {
         List<CKBean> finalResult = new ArrayList<>();
 
@@ -37,20 +47,27 @@ public class CKXMLService {
         return finalResult;
     }
 
-    public List<Map<String, Object>> handleMultiRequest(MultipartFile[] files) {
-        List<Map<String, Object>> result = new ArrayList<>();
+    /**
+     * 传入文件列表，返回CkVO列表
+     *
+     * @param files 文件列表
+     * @return CkVO列表
+     */
+    public List<CkXmlVO> handleMultiRequest(MultipartFile[] files) {
+        List<CkXmlVO> result = new ArrayList<>();
         for (MultipartFile file : files) {
-            Map<String, Object> map = new HashMap<>();
-            CkXmlVO ckXmlVO = handleRequest(file);
-            map.put("name", ckXmlVO.getName());
-            ckXmlVO.getClasses().forEach(clazz -> {
-                map.put(clazz.getCLASS(), clazz);
-            });
-            result.add(map);
+            CkXmlVO vo = handleRequest(file);
+            result.add(vo);
         }
         return result;
     }
 
+    /**
+     * 传入文件，返回CkXmlVO
+     *
+     * @param file 文件
+     * @return CkXmlVO
+     */
     public CkXmlVO handleRequest(MultipartFile file) {
         List<CKBean> result;
         try {
@@ -65,6 +82,12 @@ public class CKXMLService {
         return new CkXmlVO(file.getOriginalFilename(), ckVOS);
     }
 
+    /**
+     * 将CKBean列表转换为CkXmlItemVO列表
+     *
+     * @param results CKBean列表
+     * @return CkXmlItemVO列表
+     */
     private List<CkXmlItemVO> convertToVO(List<CKBean> results) {
         List<CkXmlItemVO> vos = new ArrayList<>();
         for (CKBean result : results) {

@@ -14,6 +14,9 @@ public class Application {
         init();
     }
 
+    /**
+     * 初始化缓存文件夹
+     */
     private static void init() {
         File file = new File(Constant.UPLOAD_PATH);
         if (!file.exists()) {

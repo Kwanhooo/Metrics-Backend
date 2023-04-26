@@ -8,6 +8,12 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.util.Arrays;
 
+/**
+ * 代码度量控制器
+ * 包含本项目所有的代码度量方法
+ *
+ * @author kwanho
+ */
 @RestController
 @RequestMapping("/metrics")
 @CrossOrigin(origins = "*")
