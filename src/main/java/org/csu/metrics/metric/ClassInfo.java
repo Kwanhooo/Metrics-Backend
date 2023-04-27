@@ -15,8 +15,11 @@ public class ClassInfo extends ASTVisitor {
 
         getFullClassName(node.resolveBinding());
 
-        if (node.isInterface()) type = "interface";
-        else type = "class";
+        if (node.isInterface()) {
+            type = "interface";
+        } else {
+            type = "class";
+        }
 
         return false;
     }
@@ -37,8 +40,9 @@ public class ClassInfo extends ASTVisitor {
     }
 
     private void getFullClassName(ITypeBinding binding) {
-        if (binding != null)
+        if (binding != null) {
             this.className = binding.getBinaryName();
+        }
     }
 
 }

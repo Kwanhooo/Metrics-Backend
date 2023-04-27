@@ -26,8 +26,9 @@ public class CKReport {
 
     public CKNumber getByClassName(String name) {
         for (CKNumber ck : all()) {
-            if (ck.getClassName().equals(name))
+            if (ck.getClassName().equals(name)) {
                 return ck;
+            }
         }
 
         return null;

@@ -25,11 +25,17 @@ public class CK {
         } else {
             long maxMemory = Runtime.getRuntime().maxMemory() / (1 << 20); // in MiB
 
-            if (maxMemory >= 2000) MAX_AT_ONCE = 400;
-            else if (maxMemory >= 1500) MAX_AT_ONCE = 300;
-            else if (maxMemory >= 1000) MAX_AT_ONCE = 200;
-            else if (maxMemory >= 500) MAX_AT_ONCE = 100;
-            else MAX_AT_ONCE = 25;
+            if (maxMemory >= 2000) {
+                MAX_AT_ONCE = 400;
+            } else if (maxMemory >= 1500) {
+                MAX_AT_ONCE = 300;
+            } else if (maxMemory >= 1000) {
+                MAX_AT_ONCE = 200;
+            } else if (maxMemory >= 500) {
+                MAX_AT_ONCE = 100;
+            } else {
+                MAX_AT_ONCE = 25;
+            }
         }
     }
 

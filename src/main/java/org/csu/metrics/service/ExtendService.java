@@ -23,7 +23,9 @@ public class ExtendService {
         for (File file : targetFile) {
             CKReport report = new CK().calculate(file.getAbsolutePath());
             for (CKNumber result : report.all()) {
-                if (result.isError()) continue;
+                if (result.isError()) {
+                    continue;
+                }
                 finalResult.add(result);
             }
         }
@@ -33,6 +35,7 @@ public class ExtendService {
     public List<ExtendVO> handleRequest(MultipartFile[] files) {
         List<File> targetFiles = new ArrayList<>();
         for (MultipartFile file : files) {
+            // 每个文件生成唯一的ID
             File targetFile = new File(Constant.UPLOAD_PATH,
                     UUID.randomUUID() + "###" + file.getOriginalFilename());
             try {

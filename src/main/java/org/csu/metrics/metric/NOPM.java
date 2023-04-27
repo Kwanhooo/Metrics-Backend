@@ -7,14 +7,15 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 
-public class NOPM extends ASTVisitor implements Metric {
+public class NOPM extends ASTVisitor implements Metric {// public方法数量 num of public method
 
     private int methods;
 
     @Override
     public boolean visit(MethodDeclaration node) {
-        if (Modifier.isPublic(node.getModifiers()))
+        if (Modifier.isPublic(node.getModifiers())) {
             methods++;
+        }
 
         return false;
     }

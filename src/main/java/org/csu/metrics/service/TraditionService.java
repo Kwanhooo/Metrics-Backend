@@ -26,7 +26,7 @@ public class TraditionService {
             long fileLength = targetFile.length();
             LineNumberReader lnr = new LineNumberReader(new FileReader(targetFile));
             lnr.skip(fileLength);
-            int lines = lnr.getLineNumber();
+            int lines = lnr.getLineNumber() + 1;
             lnr.close();
 
             // 处理平均值圈复杂度，方法的复杂度会打印在控制台
@@ -42,20 +42,25 @@ public class TraditionService {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(targetFile), StandardCharsets.UTF_8));
             String line;
             int count = 0;
+            boolean flag = false;
             while ((line = br.readLine()) != null) {
                 line = line.trim();
-                if (line.startsWith("//")) {
-                    count++;
-                } else if (line.startsWith("/**")) {
-                    count++;
-                    while (!br.readLine().startsWith("*/")) {
-                        count++;
+                if (line.startsWith("/*") && !line.endsWith("*/")) { //以"/*"开头的多行注释
+                    count++;// 注释行(/**)
+                    flag = true;
+                } else if (true == flag) { //多行注释
+                    count++;// 注释行(*,*/)
+                    if (line.endsWith("*/")) { //以"*/"结尾
+                        flag = false;
                     }
-                    count++;
+                } else if (line.startsWith("//")) { //以"//"开头
+                    count++;// 注释行
+                } else if (line.startsWith("/*")) { //以"/*"开头，(/*注释不换行*/)
+                    count++;// 注释行
                 }
             }
-
-            return new TrBean(String.valueOf(lines), String.valueOf(mv.getAvgCC()), String.valueOf(((float) count / (float) lines) * 100) + "%");
+            System.out.println("注释行"+count);
+            return new TrBean(String.valueOf(lines),String.valueOf(((float) count / (float) lines) * 100) + "%", String.valueOf(mv.getAvgCC()));
         } else {
             System.out.println("请选择文件！");
             return null;
@@ -84,12 +89,12 @@ public class TraditionService {
     private List<TraditionVO> convertToVO(List<TrBean> results) {
         List<TraditionVO> traditionVOS = new ArrayList<>();
         for (TrBean result : results) {
-            result.setCp(String.valueOf((int) Math.ceil(Double.parseDouble(result.getCp()))));
-            // cc 去掉最后的百分号
-            result.setCc(result.getCc().substring(0, result.getCc().length() - 1));
-            // cc / 100
-            result.setCc(String.valueOf(Double.parseDouble(result.getCc()) / 100));
-            traditionVOS.add(new TraditionVO(result.getFile(), result.getLoc(), result.getCp(), result.getCc()));
+//            result.setCp(String.valueOf((int) Math.ceil(Double.parseDouble(result.getCp()))));
+//            // cc 去掉最后的百分号
+//            result.setCc(result.getCc().substring(0, result.getCc().length() - 1));
+//            // cc / 100
+//            result.setCc(String.valueOf(Double.parseDouble(result.getCc()) / 100));
+            traditionVOS.add(new TraditionVO(result.getFile(), result.getLoc(), result.getCc(), result.getCp()));
         }
         return traditionVOS;
     }

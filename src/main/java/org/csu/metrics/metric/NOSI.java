@@ -11,8 +11,9 @@ public class NOSI extends ASTVisitor implements Metric {
     public boolean visit(MethodInvocation node) {
 
         IMethodBinding binding = node.resolveMethodBinding();
-        if (binding != null && Modifier.isStatic(binding.getModifiers()))
+        if (binding != null && Modifier.isStatic(binding.getModifiers())) {
             count++;
+        }
 
         return super.visit(node);
     }

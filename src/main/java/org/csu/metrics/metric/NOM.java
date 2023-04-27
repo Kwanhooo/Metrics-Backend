@@ -6,7 +6,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
-public class NOM extends ASTVisitor implements Metric {
+public class NOM extends ASTVisitor implements Metric { // 方法数
 
     private int methods;
 

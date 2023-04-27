@@ -7,14 +7,15 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 
-public class NOSF extends ASTVisitor implements Metric {
+public class NOSF extends ASTVisitor implements Metric { // 静态变量数量
 
     private int fields;
 
     @Override
     public boolean visit(FieldDeclaration node) {
-        if (Modifier.isStatic(node.getModifiers()))
+        if (Modifier.isStatic(node.getModifiers())) {
             fields++;
+        }
 
         return false;
     }

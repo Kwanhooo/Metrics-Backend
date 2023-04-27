@@ -6,7 +6,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 
-public class NOF extends ASTVisitor implements Metric {
+public class NOF extends ASTVisitor implements Metric { // 变量数
 
     private int fields;
 

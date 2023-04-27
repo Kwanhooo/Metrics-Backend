@@ -8,13 +8,15 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class DIT extends ASTVisitor implements Metric {
-
-    int dit = 1; // Object is the father of everyone!
+    // Object is the father of everyone!
+    int dit = 1;
 
     @Override
     public boolean visit(TypeDeclaration node) {
         ITypeBinding binding = node.resolveBinding();
-        if (binding != null) calculate(binding);
+        if (binding != null) {
+            calculate(binding);
+        }
 
         return super.visit(node);
     }
