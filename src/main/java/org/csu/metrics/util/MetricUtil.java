@@ -71,23 +71,26 @@ public class MetricUtil {
             clazz.setName(element.elementText("Name"));
 
             Set<Attribute> attributes = clazz.getAttributes();
-            for (Element attributeElement : element.element("Attributes").elements()) {
-                Attribute attribute = new Attribute();
-                attribute.setId(attributeElement.attributeValue("Id"));
-                attribute.setName(attributeElement.elementText("Name"));
-                attribute.setDataType(attributeElement.elementText("DataType"));
-                attribute.setVisibility(attributeElement.elementText("Attribute.Visibility"));
-                attributes.add(attribute);
+            if(element.element("Attributes")!=null){
+                for (Element attributeElement : element.element("Attributes").elements()) {
+                    Attribute attribute = new Attribute();
+                    attribute.setId(attributeElement.attributeValue("Id"));
+                    attribute.setName(attributeElement.elementText("Name"));
+                    attribute.setDataType(attributeElement.elementText("DataType"));
+                    attribute.setVisibility(attributeElement.elementText("Attribute.Visibility"));
+                    attributes.add(attribute);
+                }
             }
 
-
             Set<Operation> operations = clazz.getOperations();
-            for (Element operationElement : element.element("Operations").elements()) {
-                Operation operation = new Operation();
-                operation.setId(operationElement.attributeValue("Id"));
-                operation.setName(operationElement.elementText("Name"));
-                operation.setReturnType(operationElement.elementText("ReturnType"));
-                operations.add(operation);
+            if(element.element("Operations")!=null) {
+                for (Element operationElement : element.element("Operations").elements()) {
+                    Operation operation = new Operation();
+                    operation.setId(operationElement.attributeValue("Id"));
+                    operation.setName(operationElement.elementText("Name"));
+                    operation.setReturnType(operationElement.elementText("ReturnType"));
+                    operations.add(operation);
+                }
             }
 
             clazzMap.put(clazz.getId(), clazz);

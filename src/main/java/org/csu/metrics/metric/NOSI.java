@@ -4,7 +4,7 @@ import org.csu.metrics.core.CKNumber;
 import org.csu.metrics.core.CKReport;
 import org.eclipse.jdt.core.dom.*;
 
-public class NOSI extends ASTVisitor implements Metric {
+public class NOSI extends ASTVisitor implements Metric { //调用的静态方法数
 
     private int count = 0;
 
